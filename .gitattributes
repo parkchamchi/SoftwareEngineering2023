@@ -1,0 +1,2 @@
+# 모든 StarUML 파일을 Github 언어 인식에서 제외시킵니다.
+*.mdj linguist-vendored
