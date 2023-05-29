@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Lists{% endblock title %}
+
+{% block content %}
+{% for list_item in list_list %}
+<div class="card">
+	<div class="card-header">
+		<span class="fw-bold">
+			<a href="{{ list_item.get_absolute_url }}">{{ list_item.title }}</a>
+		</span> &middot;
+		<span class="text-muted">by {{ list_item.author }} |
+		{{ list_item.date }}</span>
+	</div>
+	<div class="card-body">
+		{{ list_item.body }}
+		<a href="{% url 'list_edit' list_item.pk %}">Edit</a>
+		<a href="{% url 'list_delete' list_item.pk %}">Delete</a>
+
+		<div>
+			{% for task in list_item.task_set.all %}
+				<span class="font-weight-bold">
+					{{ task.title }} &middot;
+				</span>
+				{{ task.end_date }}
+				{{ task.priority }}
+				<br>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="card-footer text-center text-muted">
+	</div>
+</div>
+<br />
+{% endfor %}
+{% endblock content %}
