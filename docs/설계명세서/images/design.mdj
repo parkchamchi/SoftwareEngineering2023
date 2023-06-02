@@ -467,7 +467,7 @@
 											"top": 291,
 											"width": 168.13671875,
 											"height": 13,
-											"text": "+sort(criterion)",
+											"text": "+sort()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2677,18 +2677,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGIYPaYtK3MPIw="
 							},
-							"name": "sort",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAGIYQo53948BhE=",
-									"_parent": {
-										"$ref": "AAAAAAGIYQnvfN1+KG4="
-									},
-									"name": "criterion",
-									"type": ""
-								}
-							]
+							"name": "sort"
 						},
 						{
 							"_type": "UMLOperation",
@@ -2993,9 +2982,9 @@
 														"$ref": "AAAAAAGIbIrpfetfOiw="
 													},
 													"font": "Arial;13;0",
-													"left": 32.72998046875,
+													"left": 32.45703125,
 													"top": 13,
-													"width": 56.61181640625,
+													"width": 57.5703125,
 													"height": 13,
 													"text": "작업 수정"
 												},
@@ -3008,7 +2997,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 14.72998046875,
+													"width": 14.45703125,
 													"height": 13,
 													"text": "sd"
 												}
@@ -3713,7 +3702,7 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 40.72998046875,
+													"left": 41.44091796875,
 													"top": 197,
 													"width": 1,
 													"height": 13
@@ -3727,7 +3716,7 @@
 													"font": "Arial;13;1",
 													"left": 21,
 													"top": 197,
-													"width": 14.72998046875,
+													"width": 15.44091796875,
 													"height": 13,
 													"text": "alt"
 												},
