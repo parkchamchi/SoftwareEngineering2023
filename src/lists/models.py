@@ -63,3 +63,15 @@ class Task(models.Model):
 		now = timezone.now().date()
 		tomorrow = now + timezone.timedelta(days=1)
 		return self.end_date == now or self.end_date == tomorrow
+	
+class FrontendOptions(models.Model):
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='frontend_options')
+	hide_finished_tasks = models.BooleanField(default=False)
+
+	@classmethod
+	def get(cls, user):
+		try:
+			frontend_options = cls.objects.get(user=user)
+		except cls.DoesNotExist:
+			frontend_options = cls.objects.create(user=user)
+		return frontend_options

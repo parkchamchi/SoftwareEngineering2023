@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 from guest_user.mixins import AllowGuestUserMixin
 
-from .models import List, Task
+from .models import List, Task, FrontendOptions
 from .forms import TaskForm
 
 # Create your views here.
@@ -113,3 +113,13 @@ class TaskToggleDoneView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTest
 	def test_func(self):
 		task = get_object_or_404(Task, id=self.kwargs['task_id'])
 		return task.list.author == self.request.user
+	
+class ToggleHideFinishedTasksView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin, View):
+	def post(self, request):
+		frontend_options = FrontendOptions.get(user=request.user)
+		frontend_options.hide_finished_tasks = not frontend_options.hide_finished_tasks
+		frontend_options.save()
+		return redirect(request.META.get('HTTP_REFERER')) #return to the referer
+	
+	def test_func(self):
+		return self.request.user.is_authenticated

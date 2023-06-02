@@ -1,18 +1,22 @@
-<span class="font-weight-bold">
-	{{ task.title }} &middot;
+{% load frontend_options_extras %}
+<span {% if request.user|get_hide_finished_tasks and task.is_done %}class="hidden"{%endif%}>
+	<span class="font-weight-bold">
+		{{ task.title }} &middot;
+	</span>
+
+	{% if task.should_show_alarm %}
+		<span style="font-weight: bold;">
+	{% else %}
+		<span>
+	{% endif %}
+	{{ task.end_date }} &middot;
+	</span>
+
+	{{ task.priority }} &middot;
+	<form method="post" action="{% url 'task_toggle_done' task.id %}" style="display: inline">
+		{% csrf_token %}
+		<button type="submit">Done: {{ task.is_done }}</button>
+	</form>
 </span>
 
-{% if task.should_show_alarm %}
-	<span style="font-weight: bold;">
-{% else %}
-	<span>
-{% endif %}
-{{ task.end_date }} &middot;
-</span>
-
-{{ task.priority }} &middot;
-<form method="post" action="{% url 'task_toggle_done' task.id %}" style="display: inline">
-	{% csrf_token %}
-	<button type="submit">Done: {{ task.is_done }}</button>
-</form>
 <br>
