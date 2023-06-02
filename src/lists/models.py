@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _ # https://docs.djangoproject.com/en/4.2/ref/models/fields/#enumeration-types
+from django.utils import timezone
 
 import warnings
 
@@ -56,3 +57,9 @@ class Task(models.Model):
 	def toggle_done(self):
 		self.is_done = not self.is_done
 		self.save()
+
+	def should_show_alarm(self):
+		#Returns true when `end_date` is tomorrow or today
+		now = timezone.now().date()
+		tomorrow = now + timezone.timedelta(days=1)
+		return self.end_date == now or self.end_date == tomorrow

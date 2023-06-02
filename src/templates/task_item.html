@@ -1,7 +1,15 @@
 <span class="font-weight-bold">
 	{{ task.title }} &middot;
 </span>
+
+{% if task.should_show_alarm %}
+	<span style="font-weight: bold;">
+{% else %}
+	<span>
+{% endif %}
 {{ task.end_date }} &middot;
+</span>
+
 {{ task.priority }} &middot;
 <form method="post" action="{% url 'task_toggle_done' task.id %}" style="display: inline">
 	{% csrf_token %}
