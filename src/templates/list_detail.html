@@ -16,13 +16,8 @@
 	<hr>
 
 	<div>
-		{% for task in object.get_sorted_tasks %}
-			<span class="font-weight-bold">
-				{{ task.title }} &middot;
-			</span>
-			{{ task.end_date }} &middot;
-			{{ task.priority }}
-			<br>
+		{% for task in object.sort %}
+			{% include 'task_item.html' %}
 		{% endfor %}
 	</div>
 

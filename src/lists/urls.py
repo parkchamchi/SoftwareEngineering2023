@@ -8,6 +8,8 @@ from .views import (
 	ListCreateView,
     
 	ListSortView,
+    
+	TaskToggleDoneView,
 )
 
 urlpatterns = [
@@ -17,6 +19,8 @@ urlpatterns = [
 	path("new/", ListCreateView.as_view(), name="list_new"),
 
     path("<int:pk>/sort/", ListSortView.as_view(), name="list_sort"),
+    
+	path("task_toggle_done/<int:task_id>/", TaskToggleDoneView.as_view(), name="task_toggle_done"),
     
 	path("", ListListView.as_view(), name="list_list"),
 ]

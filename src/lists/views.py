@@ -4,10 +4,11 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView  # new
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import get_object_or_404, redirect
 
 from guest_user.mixins import AllowGuestUserMixin
 
-from .models import List
+from .models import List, Task
 from .forms import TaskForm
 
 # Create your views here.
@@ -102,3 +103,13 @@ class ListSortView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin,
 	def test_func(self):
 		obj = self.get_object()
 		return obj.author == self.request.user
+	
+class TaskToggleDoneView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin, View):
+	def post(self, request, task_id):
+		task = get_object_or_404(Task, id=task_id)
+		task.toggle_done()
+		return redirect(request.META.get('HTTP_REFERER')) #return to the referer
+	
+	def test_func(self):
+		task = get_object_or_404(Task, id=self.kwargs['task_id'])
+		return task.list.author == self.request.user

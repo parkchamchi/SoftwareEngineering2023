@@ -31,7 +31,7 @@ class List(models.Model):
 	def get_absolute_url(self):
 		return reverse("list_detail", kwargs={"pk": self.pk})
 	
-	def get_sorted_tasks(self):
+	def sort(self):
 		if self.sort_criterion == SortCriterion.BY_PRIORITY:
 			return self.task_set.order_by("priority")
 		elif self.sort_criterion == SortCriterion.BY_END_DATE:
@@ -52,3 +52,7 @@ class Task(models.Model):
 
 	def __str__(self):
 		return self.title
+	
+	def toggle_done(self):
+		self.is_done = not self.is_done
+		self.save()

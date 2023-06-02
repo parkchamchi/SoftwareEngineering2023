@@ -1,0 +1,10 @@
+<span class="font-weight-bold">
+	{{ task.title }} &middot;
+</span>
+{{ task.end_date }} &middot;
+{{ task.priority }} &middot;
+<form method="post" action="{% url 'task_toggle_done' task.id %}" style="display: inline">
+	{% csrf_token %}
+	<button type="submit">Done: {{ task.is_done }}</button>
+</form>
+<br>
