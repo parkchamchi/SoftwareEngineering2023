@@ -91,3 +91,14 @@ class ListCreateView(AllowGuestUserMixin, LoginRequiredMixin, CreateView):
 		#Checks whether the author is valid
 		form.instance.author = self.request.user
 		return super().form_valid(form)
+	
+class ListSortView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = List
+	fields = (
+		"sort_criterion",
+	)
+	template_name = "list_sort.html"
+
+	def test_func(self):
+		obj = self.get_object()
+		return obj.author == self.request.user

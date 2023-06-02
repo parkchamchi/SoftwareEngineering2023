@@ -4,20 +4,23 @@
 {% block content %}
 <div class="list-entry">
 	<h2>{{ object.title }}</h2>
-	<p>by {{ object.author }} | {{ object.date }}</p>
-	<p>{{ object.body }}</p>
+	<p><span class="text-muted">Sorted {{ object.get_sort_criterion_display }}</span></p>
 </div>
 <div>
-	<p><a href="{% url 'list_edit' list.pk %}">Edit</a>
+	<p>
+		<a href="{% url 'list_edit' list.pk %}">Edit</a>
 		<a href="{% url 'list_delete' list.pk %}">Delete</a>
+		<a href="{% url 'list_sort' list.pk %}">Sort...</a>
 	</p>
 
+	<hr>
+
 	<div>
-		{% for task in object.task_set.all %}
+		{% for task in object.get_sorted_tasks %}
 			<span class="font-weight-bold">
 				{{ task.title }} &middot;
 			</span>
-			{{ task.end_date }}
+			{{ task.end_date }} &middot;
 			{{ task.priority }}
 			<br>
 		{% endfor %}

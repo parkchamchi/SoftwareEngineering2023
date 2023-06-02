@@ -3,6 +3,8 @@ from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _ # https://docs.djangoproject.com/en/4.2/ref/models/fields/#enumeration-types
 
+import warnings
+
 # Create your models here.
 
 class SortCriterion(models.TextChoices):
@@ -28,6 +30,15 @@ class List(models.Model):
 	
 	def get_absolute_url(self):
 		return reverse("list_detail", kwargs={"pk": self.pk})
+	
+	def get_sorted_tasks(self):
+		if self.sort_criterion == SortCriterion.BY_PRIORITY:
+			return self.task_set.order_by("priority")
+		elif self.sort_criterion == SortCriterion.BY_END_DATE:
+			return self.task_set.order_by("end_date")
+		else:
+			warnings.warn("Invalid sort criterion encountered.", UserWarning)
+			return self.task_set.all()
 
 class Task(models.Model):
 	list = models.ForeignKey(List, on_delete=models.CASCADE)
