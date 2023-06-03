@@ -3,3 +3,5 @@
 *.mdj linguist-vendored
 # Pencil files
 *.epgz linguist-vendored
+# draw.io files
+*.drawio linguist-vendored
