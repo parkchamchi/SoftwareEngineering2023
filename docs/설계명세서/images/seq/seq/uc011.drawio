@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" modified="2023-06-02T15:29:35.284Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57" etag="XCMdmkFLFnABBuRGnCNo" version="21.3.6" type="device">
+  <diagram name="페이지-1" id="Zs1eefywLEfbVonNod6f">
+    <mxGraphModel dx="952" dy="1124" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-1" value="사용자" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="46" y="19" width="100" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-2" value="시스템" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="279" y="19" width="100" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=16;" vertex="1" parent="3EbWSdVmUcCm9aJmxFii-2">
+          <mxGeometry x="45" y="65" width="10" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-6" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fontSize=16;" vertex="1" parent="3EbWSdVmUcCm9aJmxFii-2">
+          <mxGeometry x="52" y="104" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-7" value="알림 기준에 맞는 작업이 &lt;br&gt;있는지 확인한다" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" edge="1" target="3EbWSdVmUcCm9aJmxFii-6" parent="3EbWSdVmUcCm9aJmxFii-2">
+          <mxGeometry x="0.0118" relative="1" as="geometry">
+            <mxPoint x="57" y="84" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="87" y="114" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-8" value="사용자에게 알림" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;fontSize=12;" edge="1" parent="1" target="3EbWSdVmUcCm9aJmxFii-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="328.5" y="193" as="sourcePoint" />
+            <mxPoint x="228" y="193" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3EbWSdVmUcCm9aJmxFii-9" value="UC011 작업을 미리 알려준다" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fontSize=16;width=259;height=27;" vertex="1" parent="1">
+          <mxGeometry x="-11" y="-62" width="429" height="438" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
