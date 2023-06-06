@@ -1,0 +1,20 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC001** 목록을 생성한다
+
+actor 사용자
+participant ":List" as List
+
+사용자 -> List : create()
+List --> 사용자 : 입력 폼 제공
+
+alt 생성
+	사용자 -> List: 사용자가 입력한다
+	List --> 사용자 : 목록을 반환한다
+else 사용자가 취소함
+	사용자 -> List : 사용자가 취소한다
+
+end
+
+@enduml

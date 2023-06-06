@@ -1,0 +1,20 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC003** 목록을 삭제한다
+
+actor 사용자
+participant ":List" as List
+
+사용자 -> List : delete()
+List --> 사용자 : 삭제 여부 다시 확인
+
+alt 확인
+	사용자 -> List : 확인 버튼 클릭
+	List --> 사용자 : 삭제 알림
+else 취소
+	사용자 -> List : 취소 버튼 클릭
+	List --> 사용자 : 삭제 취소 알림
+end
+
+@enduml

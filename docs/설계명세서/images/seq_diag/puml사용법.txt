@@ -1,0 +1,4 @@
+https://github.com/plantuml/plantuml
+jar 파일 다운로드 후
+	plantuml.jar -charset UTF-8 -gui
+하여 실행 한 뒤 이 디렉토리로 대상을 설정하면 .puml파일 내용에 따라 .png 파일이 바뀝니다.

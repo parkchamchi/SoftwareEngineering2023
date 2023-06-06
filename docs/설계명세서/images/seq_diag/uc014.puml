@@ -1,0 +1,21 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC014** 로그인한다
+
+actor 사용자
+participant ":User" as User
+
+사용자 -> User : login()
+User --> 사용자 : 입력 폼 전송
+
+사용자 -> User : 입력
+alt 올바른 입력
+	User --> 사용자 : 로그인됨
+else
+	사용자 -[hidden]> User
+	User --> 사용자 : 오류 메세지 출력
+end
+
+
+@enduml

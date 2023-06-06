@@ -1,0 +1,20 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC006** 작업을 삭제한다
+
+actor 사용자
+participant ":Task" as Task
+
+사용자 -> Task : delete()
+Task --> 사용자 : 삭제 여부 다시 확인
+
+alt 확인
+	사용자 -> Task : 확인 버튼 클릭
+	Task --> 사용자 : 삭제 알림
+else 취소
+	사용자 -> Task : 취소 버튼 클릭
+	Task --> 사용자 : 삭제 취소 알림
+end
+
+@enduml

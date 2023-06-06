@@ -1,0 +1,11 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC012** 완료된 작업의 보기옵션을 변경시킨다
+
+actor 사용자
+participant ":FrontendOptions" as FO
+
+사용자 -> FO : hide_finished_tasks 조작
+
+@enduml
