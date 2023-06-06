@@ -1,0 +1,15 @@
+@startuml
+
+!startsub STYLE
+
+skinparam dpi 200
+skinparam style strictuml
+skinparam ParticipantPadding 100
+
+hide footbox
+
+autoactivate on
+
+!endsub
+
+@enduml

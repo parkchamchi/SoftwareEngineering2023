@@ -1,0 +1,11 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC007** 작업의 완료상태를 변경한다
+
+actor 사용자
+participant ":Task" as Task
+
+사용자 -> Task : toggle_done()
+
+@enduml

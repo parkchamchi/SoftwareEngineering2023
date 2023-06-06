@@ -1,0 +1,14 @@
+@startuml
+!includesub style.puml!STYLE
+
+mainframe **UC008** 작업을 정렬한다
+
+actor 사용자
+participant ":Task" as Task
+
+사용자 -> Task : 정렬 버튼을 누른다
+Task --> 사용자 : 정렬 기준을 선택할 수 있는 폼을 전송한다
+사용자 -> Task : 정렬 기준을 선택한다
+Task --> 사용자 : 정렬 기준을 바탕으로 정렬한다
+
+@enduml
