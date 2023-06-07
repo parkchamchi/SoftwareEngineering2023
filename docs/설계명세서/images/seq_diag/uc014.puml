@@ -3,20 +3,20 @@
 
 mainframe **UC014** 로그인한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":User" as User
 
-사용자 -> User : 로그인 버튼 클릭
-User --> 사용자 : 입력 폼 전송
+사용자 -> view : 로그인 버튼 클릭
+view --> 사용자 : 입력 폼 전송
 
-사용자 -> User : 입력 후 확인 버튼 클릭
+사용자 -> view : 입력 후 확인 버튼 클릭
 alt 올바른 입력
-	User -> User : login()
+	view -> User : login()
 	deactivate User
-	User --> 사용자 : 로그인 확인 메세지 출력
+	view --> 사용자 : 로그인 확인 메세지 출력
 else
-	사용자 -[hidden]> User
-	User --> 사용자 : 오류 메세지 출력
+	view -[hidden]> view
+	view --> 사용자 : 오류 메세지 출력
 end
 
 

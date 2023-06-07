@@ -3,25 +3,24 @@
 
 mainframe **UC004** 작업을 생성한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":Task" as Task
 
-사용자 -> Task : 작업 생성 버튼 클릭
-Task --> 사용자 : 입력 폼 제공
+사용자 -> view : 작업 생성 버튼 클릭
+view --> 사용자 : 입력 폼 제공
 
-사용자 -> Task : 정보 입력 후 확인 버튼 클릭
-Task -> Task : 입력된 정보가 올바른지 검증
-deactivate Task
-deactivate Task
+사용자 -> view : 정보 입력 후 확인 버튼 클릭
+view -> view : 입력된 정보가 올바른지 검증
+deactivate view
 
 alt 올바름
-	사용자 -[hidden]> Task
-	Task -> Task : create()
+	view -> Task : create()
 	deactivate Task
-	Task --> 사용자 : 생성 완료 알림
+	deactivate Task
+	view --> 사용자 : 생성 완료 알림
 else 올바르지 않음
-	사용자 -[hidden]> Task 
-	Task --> 사용자 : 오류 메세지 출력
+	view -[hidden]> view 
+	view --> 사용자 : 오류 메세지 출력
 end
 
 @enduml

@@ -3,19 +3,19 @@
 
 mainframe **UC002** 목록을 수정한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":List" as List
 
-사용자 -> List : 목록 수정 버튼 클릭
-List --> 사용자 : 입력 폼 제공
+사용자 -> view : 목록 수정 버튼 클릭
+view --> 사용자 : 입력 폼 제공
 
 alt 입력
-	사용자 -> List : 수정내용 입력 후 확인 버튼 클릭
-	List -> List : edit()
+	사용자 -> view : 수정내용 입력 후 확인 버튼 클릭
+	view -> List : edit()
 	deactivate List
-	deactivate List
+	deactivate view
 else 취소
-	사용자 -> List : 취소 버튼 클릭
+	사용자 -> view : 취소 버튼 클릭
 end
 
 @enduml

@@ -3,19 +3,19 @@
 
 mainframe **UC001** 목록을 생성한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":List" as List
 
-사용자 -> List : 목록 생성 버튼 클릭
-List --> 사용자 : 입력 폼 제공
+사용자 -> view : 목록 생성 버튼 클릭
+view --> 사용자 : 입력 폼 제공
 
 alt 생성
-	사용자 -> List: 입력 후 확인버튼 클릭
-	List -> List : create()
+	사용자 -> view: 입력 후 확인버튼 클릭
+	view -> List : create()
 	deactivate List
-	deactivate List
-else 사용자가 취소함
-	사용자 -> List : 취소 버튼 클릭
+	deactivate view
+else 취소
+	사용자 -> view : 취소 버튼 클릭
 
 end
 

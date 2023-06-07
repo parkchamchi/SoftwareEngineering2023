@@ -3,10 +3,10 @@
 
 mainframe **UC012** 완료된 작업의 보기옵션을 변경시킨다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":FrontendOptions" as FO
 
-사용자 -> FO : 보기옵션 변경버튼 클릭
-FO -> FO : hide_finished_tasks 토글
+사용자 -> view : 보기옵션 변경버튼 클릭
+view -> FO : hide_finished_tasks 토글
 
 @enduml

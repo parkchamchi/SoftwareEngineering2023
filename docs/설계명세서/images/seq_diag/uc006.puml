@@ -3,20 +3,20 @@
 
 mainframe **UC006** 작업을 삭제한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":Task" as Task
 
-사용자 -> Task :작업 삭제 버튼 클릭
-Task --> 사용자 : 삭제 여부 확인 페이지 제공
+사용자 -> view :작업 삭제 버튼 클릭
+view --> 사용자 : 삭제 여부 확인 페이지 제공
 
 alt 확인
-	사용자 -> Task : 확인 버튼 클릭
-	Task -> Task : delete()
+	사용자 -> view : 확인 버튼 클릭
+	view -> Task : delete()
 	deactivate Task
-	Task --> 사용자 : 삭제 알림
+	view --> 사용자 : 삭제 알림
 else 취소
-	사용자 -> Task : 취소 버튼 클릭
-	Task --> 사용자 : 삭제 취소 알림
+	사용자 -> view : 취소 버튼 클릭
+	view --> 사용자 : 삭제 취소 알림
 end
 
 @enduml

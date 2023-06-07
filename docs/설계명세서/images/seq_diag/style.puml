@@ -12,4 +12,11 @@ autoactivate on
 
 !endsub
 
+!startsub PARTICIPANTS
+
+actor 사용자
+boundary "Web Framework" as view
+
+!endsub
+
 @enduml
