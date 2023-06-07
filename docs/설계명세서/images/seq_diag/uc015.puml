@@ -3,10 +3,10 @@
 
 mainframe **UC015** 로그아웃한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":User" as User
 
-사용자 -> User : 로그아웃 버튼 클릭
-User -> User : logout()
+사용자 -> view : 로그아웃 버튼 클릭
+view -> User : logout()
 
 @enduml

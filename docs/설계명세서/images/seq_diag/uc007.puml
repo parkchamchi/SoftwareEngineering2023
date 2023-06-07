@@ -3,10 +3,10 @@
 
 mainframe **UC007** 작업의 완료상태를 변경한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":Task" as Task
 
-사용자 -> Task : 완료상태 변경 버튼 클릭
-Task -> Task : toggle_done()
+사용자 -> view : 완료상태 변경 버튼 클릭
+view -> Task : toggle_done()
 
 @enduml

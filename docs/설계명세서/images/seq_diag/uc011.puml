@@ -3,13 +3,14 @@
 
 mainframe **UC011** 작업을 미리 알려준다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":Task" as Task
 
-Task -> Task : is_done()
+view -> Task : is_done()
+Task --> view : True/False
 
 opt True
-	Task --> 사용자 : 작업 알림
+	view --> 사용자 : 작업 알림
 end
 
 @enduml

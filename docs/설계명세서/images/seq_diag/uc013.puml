@@ -3,16 +3,16 @@
 
 mainframe **UC013** 계정을 등록한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":User" as User
 
-사용자 -> User : 계정등록 버튼 클릭
+사용자 -> view : 계정등록 버튼 클릭
 
 loop WHILE 입력이 올바를때까지
-	User --> 사용자 : 입력 폼 전송
-	사용자 -> User : 입력 후 확인 버튼 클릭
+	view --> 사용자 : 입력 폼 전송
+	사용자 -> view : 입력 후 확인 버튼 클릭
 end
 
-User -> User : signup()
+view -> User : signup()
 
 @enduml

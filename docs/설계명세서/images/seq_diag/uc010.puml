@@ -3,14 +3,14 @@
 
 mainframe **UC010** 우선순위로 정렬한다
 
-actor 사용자
+!includesub style.puml!PARTICIPANTS
 participant ":Task" as Task
 
-사용자 -> Task : 정렬 버튼 클릭
-Task --> 사용자 : 정렬 기준 선택 폼 제공
-사용자 -> Task : 우선순위 선택
-Task -> Task : sort()
+사용자 -> view : 정렬 버튼 클릭
+view --> 사용자 : 정렬 기준 선택 폼 제공
+사용자 -> view : 우선순위 선택
+view -> Task : sort()
 deactivate Task
-deactivate Task
+deactivate view
 
 @enduml
