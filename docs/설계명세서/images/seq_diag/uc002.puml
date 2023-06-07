@@ -6,16 +6,16 @@ mainframe **UC002** 목록을 수정한다
 actor 사용자
 participant ":List" as List
 
-사용자 -> List : edit()
+사용자 -> List : 목록 수정 버튼 클릭
 List --> 사용자 : 입력 폼 제공
 
 alt 입력
-	사용자 -> List : 사용자가 수정사항을 입력한다
-	List -> List : 목록을 수정한다
+	사용자 -> List : 수정내용 입력 후 확인 버튼 클릭
+	List -> List : edit()
 	deactivate List
 	deactivate List
 else 취소
-	사용자 -> List : 사용자가 수정을 취소한다
+	사용자 -> List : 취소 버튼 클릭
 end
 
 @enduml
