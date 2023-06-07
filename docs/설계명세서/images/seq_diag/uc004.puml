@@ -6,16 +6,18 @@ mainframe **UC004** 작업을 생성한다
 actor 사용자
 participant ":Task" as Task
 
-사용자 -> Task : create()
-Task --> 사용자 : 입력 폼 반환
+사용자 -> Task : 작업 생성 버튼 클릭
+Task --> 사용자 : 입력 폼 제공
 
-사용자 -> Task : 정보 입력
+사용자 -> Task : 정보 입력 후 확인 버튼 클릭
 Task -> Task : 입력된 정보가 올바른지 검증
 deactivate Task
 deactivate Task
 
 alt 올바름
-	사용자 -[hidden]> Task 
+	사용자 -[hidden]> Task
+	Task -> Task : create()
+	deactivate Task
 	Task --> 사용자 : 생성 완료 알림
 else 올바르지 않음
 	사용자 -[hidden]> Task 

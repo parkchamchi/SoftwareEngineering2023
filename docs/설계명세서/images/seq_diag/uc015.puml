@@ -6,7 +6,7 @@ mainframe **UC015** 로그아웃한다
 actor 사용자
 participant ":User" as User
 
-사용자 -> User : logout()
-User --> 사용자 : 로그아웃됨
+사용자 -> User : 로그아웃 버튼 클릭
+User -> User : logout()
 
 @enduml

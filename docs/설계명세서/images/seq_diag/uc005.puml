@@ -6,16 +6,16 @@ mainframe **UC005** 작업을 수정한다
 actor 사용자
 participant ":Task" as Task
 
-사용자 -> Task : edit()
+사용자 -> Task : 작업 수정 버튼 클릭
 Task --> 사용자 : 입력 폼 제공
 
 alt 입력
-	사용자 -> Task : 사용자가 수정사항을 입력한다
-	Task -> Task : 작업을 수정한다
+	사용자 -> Task : 수정내용 입력 후 확인 버튼 클릭
+	Task -> Task : edit()
 	deactivate Task
 	deactivate Task
 else 취소
-	사용자 -> Task : 사용자가 수정을 취소한다
+	사용자 -> Task : 취소 버튼 클릭
 end
 
 @enduml
