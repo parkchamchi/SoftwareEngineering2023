@@ -14,7 +14,7 @@ alt 올바른 입력
 	view -> User : login()
 	deactivate User
 	view --> 사용자 : 로그인 확인 메세지 출력
-else
+else 올바르지 않은 입력
 	view -[hidden]> view
 	view --> 사용자 : 오류 메세지 출력
 end
