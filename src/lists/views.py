@@ -104,6 +104,30 @@ class ListSortView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin,
 		obj = self.get_object()
 		return obj.author == self.request.user
 	
+class TaskUpdateView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = Task
+	form_class = TaskForm
+	template_name = "task_edit.html"
+
+	def test_func(self):
+		obj = self.get_object()
+		return obj.list.author == self.request.user
+
+	def get_success_url(self):
+		return reverse("list_list")
+
+class TaskDeleteView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = Task
+	template_name = "task_delete.html"
+	#success_url = reverse_lazy("list_list")
+
+	def test_func(self):
+		obj = self.get_object()
+		return obj.list.author == self.request.user
+	
+	def get_success_url(self):
+		return reverse("list_list")
+	
 class TaskToggleDoneView(AllowGuestUserMixin, LoginRequiredMixin, UserPassesTestMixin, View):
 	def post(self, request, task_id):
 		task = get_object_or_404(Task, id=task_id)
