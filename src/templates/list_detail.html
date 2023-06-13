@@ -2,33 +2,36 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="list-entry">
-	<h2>{{ object.title }}</h2>
-	<p><span class="text-muted">Sorted {{ object.get_sort_criterion_display }}</span></p>
-</div>
-<div>
-	<p>
-		<a href="{% url 'list_edit' list.pk %}">Edit</a>
-		<a href="{% url 'list_delete' list.pk %}">Delete</a>
-		<a href="{% url 'list_sort' list.pk %}">Sort...</a>
-	</p>
+  <div class="container">
+    <div class="list-entry">
+      <h2>{{ object.title }}</h2>
+      <p><span class="text-muted">정렬 {{ object.get_sort_criterion_display }}</span></p>
+    </div>
+    <div>
+      <p>
+        <a href="{% url 'list_edit' list.pk %}" class="btn btn-primary">수정</a>
+        <a href="{% url 'list_delete' list.pk %}" class="btn btn-danger">삭제</a>
+        <a href="{% url 'list_sort' list.pk %}" class="btn btn-secondary">정렬</a>
+      </p>
 
-	<hr>
+      <hr>
 
-	<div>
-		{% for task in object.sort %}
-			{% include 'task_item.html' %}
-		{% endfor %}
-	</div>
+      <div>
+        {% for task in object.sort %}
+          {% include 'task_item.html' %}
+        {% endfor %}
+      </div>
 
-	<hr>
+      <hr>
 
-	<h4>New Task</h4>
-	<form action="" method="post">{% csrf_token %}
-		{{ form | crispy }}
-		<button class="btn-success ml-2" type="submit">Save</button>
-	</form>
+      <h4>New Task</h4>
+      <form action="" method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-success ml-2" type="submit">저장</button>
+      </form>
 
-	<p>Back to <a href="{% url 'list_list' %}">All Lists</a>.</p>
-</div>
+      <p><a href="{% url 'list_list' %}" class="btn btn-link">목록보기</a></p>
+    </div>
+  </div>
 {% endblock content %}

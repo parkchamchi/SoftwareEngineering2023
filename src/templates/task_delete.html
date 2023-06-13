@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Delete</h1>
-<form action="" method="post">{% csrf_token %}
-	<p>Are you sure you want to delete "{{ task.title }}"?</p>
-	<button class="btn btn-danger ml-2" type="submit">Confirm</button>
+<h1 class="mt-5">Delete</h1>
+<form action="" method="post" class="mt-3">
+  {% csrf_token %}
+  <p class="mt-4">"{{ task.title }}"을 삭제하시겠습니까?</p>
+  <button class="btn btn-danger mt-3" type="submit">확인</button>
 </form>
 {% endblock content %}
