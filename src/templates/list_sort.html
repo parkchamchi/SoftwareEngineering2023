@@ -2,9 +2,15 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<h1>Sort</h1>
-<form action="" method="post">{% csrf_token %}
-	{{ form|crispy }}
-	<button class="btn btn-info ml-2" type="submit">Sort</button>
-</form>
+  <div class="container">
+    <div class="card mt-4">
+      <div class="card-body">
+        <h1 class="card-title">정렬</h1>
+        <form action="" method="post" class="mt-4">{% csrf_token %}
+          {{ form|crispy }}
+          <button class="btn btn-info ml-2" type="submit">정렬</button>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock content %}

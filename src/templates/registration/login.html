@@ -3,9 +3,9 @@
 {% block title %}Log In{% endblock title %}
 
 {% block content %}
-<h2>Log In</h2>
+<h2>로그인</h2>
 <form method="post">{% csrf_token %}
 	{{ form | crispy }}
-	<button type="submit" class="btn btn-success ml-2">Log In</button>
+	<button type="submit" class="btn btn-success ml-2">로그인</button>
 </form>
 {% endblock content %}

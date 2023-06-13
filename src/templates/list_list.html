@@ -3,30 +3,33 @@
 {% block title %}Lists{% endblock title %}
 
 {% block content %}
-{% for list_item in list_list %}
-<div class="card">
-	<div class="card-header">
-		<span class="fw-bold">
-			<a href="{{ list_item.get_absolute_url }}">{{ list_item.title }}</a>
-		</span> &middot;
-		<span class="text-muted">Sorted {{ list_item.get_sort_criterion_display }}</span>
-	</div>
-	<div class="card-body">
-		{{ list_item.body }}
-		<a href="{% url 'list_edit' list_item.pk %}">Edit</a>
-		<a href="{% url 'list_delete' list_item.pk %}">Delete</a>
-		<a href="{% url 'list_sort' list_item.pk %}">Sort...</a>
-		<hr>
+  <div class="container">
+    <h1>할 일 목록</h1>
+    {% for list_item in list_list %}
+      <div class="card">
+        <div class="card-header">
+          <span class="fw-bold">
+            <a href="{{ list_item.get_absolute_url }}">{{ list_item.title }}</a>
+          </span> &middot;
+          <span class="text-muted">Sorted {{ list_item.get_sort_criterion_display }}</span>
+        </div>
+        <div class="card-body">
+          {{ list_item.body }}
+          <a href="{% url 'list_edit' list_item.pk %}">수정</a>
+          <a href="{% url 'list_delete' list_item.pk %}">삭제</a>
+          <a href="{% url 'list_sort' list_item.pk %}">정렬</a>
+          <hr>
 
-		<div>
-			{% for task in list_item.sort %}
-				{% include 'task_item.html' %}
-			{% endfor %}
-		</div>
-	</div>
-	<div class="card-footer text-center text-muted">
-	</div>
-</div>
-<br />
-{% endfor %}
+          <div>
+            {% for task in list_item.sort %}
+              {% include 'task_item.html' %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card-footer text-center text-muted">
+        </div>
+      </div>
+      <br />
+    {% endfor %}
+  </div>
 {% endblock content %}

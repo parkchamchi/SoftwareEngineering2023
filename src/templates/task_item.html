@@ -13,13 +13,13 @@
 	</span>
 
 	{{ task.priority }} &middot;
-	<form method="post" action="{% url 'task_toggle_done' task.id %}" style="display: inline">
+	<form method="post" action="{% url 'task_toggle_done' task.id %}" style="display: inline;">
 		{% csrf_token %}
-		<button type="submit">Done: {{ task.is_done }}</button>
+		<button type="submit" class="btn btn-link p-0">완료 여부: {{ task.is_done }}</button>
 	</form> &middot;
 
-	<a href="{% url 'task_edit' task.id %}">Edit</a> &middot;
-	<a href="{% url 'task_delete' task.id %}">Delete</a>
+	<a href="{% url 'task_edit' task.id %}" class="btn btn-link p-0">수정</a> &middot;
+	<a href="{% url 'task_delete' task.id %}" class="btn btn-link p-0">삭제</a>
 </span>
 
 <br>

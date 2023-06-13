@@ -2,78 +2,152 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>{% block title %}Todoli{% endblock title %}</title>
-	<meta name="viewport" content="width=device-width,
-	initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <title>{% block title %}Todoli{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-	<style>
-		.hidden {
-			color: LightGray;
-		}
+  <style>
+    /* Custom Styles for 20s Male Style */
 
-		.alarm {
-			font-weight: bold;
-		}
-	</style>
+    /* Body Styling */
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    /* Header Styling */
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .nav-link {
+      font-size: 18px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: #0056b3;
+    }
+
+    /* Main Content Styling */
+    .container {
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    /* Buttons Styling */
+    .btn-outline-primary {
+      color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-outline-primary:hover {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Custom Styles for Todoli */
+
+    .hidden {
+      color: LightGray;
+    }
+
+    .alarm {
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
-	<header class="p-3 mb-3 border-bottom">
-		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-			<a class="navbar-brand" href="{% url 'home' %}">Todoli</a>
-			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="{% url 'list_list' %}" class="nav-link px-2 link-dark">Lists</a></li>
-			{% if user.is_authenticated %}
-				<li><a href="{% url 'list_new' %}" class="nav-link px-2 link-dark">+ New</a></li>
-				<li>
-					<form method="post" action="{% url 'toggle_hide_finished_tasks' %}">
-						{% csrf_token %}
-						<button type="submit">
-							Toggle Hide Finished Tasks
-							(Current: 
-								{% load frontend_options_extras %}
-								{{ request.user|get_hide_finished_tasks }}
-							)
-						</button>
-					</form>
-				</li>
-				</ul>
-				<div class="dropdown text-end">
-					<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-						data-bs-toggle="dropdown" aria-expanded="false">
-						{{ user.username }}
-					</a>
-					<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-						<li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
-						<li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
-					</ul>
-				</div>
-			{% else %}
-				</ul>
-				<div class="text-end">
-					<a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Log In</a>
-					<a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
-				</div>
-			{% endif %}
-		</div>
-		</div>
-	</header>
-	<main>
-		<div class="container">
-			{% block content %}
-			{% endblock content %}
-		</div>
-	</main>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a class="navbar-brand" href="{% url 'home' %}">Todoli</a>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{% url 'list_list' %}" class="nav-link px-2 link-dark">목록</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'list_new' %}" class="nav-link px-2 link-dark">목록생성</a></li>
+        <li>
+          <form method="post" action="{% url 'toggle_hide_finished_tasks' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary">
+              완료된 작업 숨기기 전환완료된 작업 숨기기 전환
+              (Current:
+              {% load frontend_options_extras %}
+              {{ request.user|get_hide_finished_tasks }})
+            </button>
+          </form>
+        </li>
+        </ul>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user.username }}
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="{% url 'password_change' %}">비밀번호 변경</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a></li>
+          </ul>
+        </div>
+        {% else %}
+        </ul>
+        <div class="text-end">
+          <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">로그인</a>
+          <a href="{% url 'signup' %}" class="btn btn-primary">회원가입</a>
+        </div>
+        {% endif %}
+      </div>
+  </header>
+  <main>
+    <div class="container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </main>
 
-	<!-- Bootstrap JavaScript Bundle -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-	crossorigin="anonymous"></script>
+  <!-- Bootstrap JavaScript Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
+  
