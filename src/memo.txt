@@ -1,0 +1,1 @@
+sudo /home/ec2-user/.venv/bin/uwsgi -i /home/ec2-user/sw2023/src/.config/uwsgi/mysite.ini
