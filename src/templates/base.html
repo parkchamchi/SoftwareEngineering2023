@@ -94,6 +94,10 @@
     .alarm {
       font-weight: bold;
     }
+
+	.guest_username {
+		font-style: italic;
+	}
   </style>
 </head>
 
@@ -120,10 +124,15 @@
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            {{ user.username }}
+			{% load guest_user %}
+			{% if user|is_guest_user %}
+			  <span class="guest_username">Guest</span>
+			{% else %}
+			  <span class="non_guest_username">{{ user.username }}</span>
+			{% endif %}
+            
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="{% url 'password_change' %}">비밀번호 변경</a></li>
             <li><a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a></li>
           </ul>
         </div>

@@ -9,12 +9,19 @@
         <div class="card mt-5">
           <div class="card-body text-center">
             {% if user.is_authenticated %}
-            <h2 class="mb-4">안녕하세요, {{ user.username }}님!</h2>
-            <p><a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a></p>
+              <h2 class="mb-4">
+                {% load guest_user %}
+                {% if user|is_guest_user %}
+                  안녕하세요!
+                {% else %}
+                  안녕하세요, {{ user.username }}님!
+                {% endif %}
+              </h2>
+              <p><a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a></p>
             {% else %}
-            <p class="mb-4">로그인하지 않았습니다</p>
-            <p><a href="{% url 'login' %}" class="btn btn-primary">로그인</a> |
-              <a href="{% url 'signup' %}" class="btn btn-outline-primary">회원가입</a></p>
+              <p class="mb-4">로그인하지 않았습니다</p>
+              <p><a href="{% url 'login' %}" class="btn btn-primary">로그인</a> |
+                <a href="{% url 'signup' %}" class="btn btn-outline-primary">회원가입</a></p>
             {% endif %}
             <p><a href="{% url 'list_list' %}" class="btn btn-link">목록보기</a></p>
           </div>
