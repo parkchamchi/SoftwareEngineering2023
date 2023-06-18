@@ -3,7 +3,7 @@ Description=uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=sudo /home/ec2-user/.local/bin/uwsgi -i /home/ec2-user/SoftwareEngineering2023/src/.config/uwsgi/mysite.ini
+ExecStart=sudo /home/ec2-user/.local/bin/uwsgi -i /home/ec2-user/sw2023/src/.config/uwsgi/mysite.ini
 
 Restart=always
 KillSignal=SIGQUIT

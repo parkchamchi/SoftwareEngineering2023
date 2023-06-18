@@ -32,7 +32,7 @@ DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = [
     "todoli.xyz",
-    "compute.amazonaws.com",
+    ".compute.amazonaws.com",
     "13.236.91.217",
     "localhost",
     "127.0.0.1",
