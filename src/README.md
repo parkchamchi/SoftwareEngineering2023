@@ -18,6 +18,7 @@ git checkout 깃헙아이디
 - (한번만 시행) `venv_create`로 venv 생성
 - `venv`로 venv 적용
 - (한번만 시행) `pip install -r requirements.txt`로 라이브러리 다운로드
+- (한번만 시행) `reset_db`로 DB 생성
 - `runserver`로 서버 실행. 이후 `http://127.0.0.1:8000/lists`로 진입.
 
 ## 코드

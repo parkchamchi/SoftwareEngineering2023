@@ -1,7 +1,15 @@
 asgiref==3.7.1
 crispy-bootstrap5==0.7
+dj-database-url==2.0.0
+dj-email-url==1.0.6
 Django==4.2.1
+django-cache-url==3.4.4
 django-crispy-forms==2.0
 django-guest-user==0.5.4
+environs==9.3.5
+marshmallow==3.19.0
+packaging==23.1
+python-dotenv==1.0.0
 sqlparse==0.4.4
+typing-extensions==4.6.3
 tzdata==2023.3
