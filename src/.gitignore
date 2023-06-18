@@ -2,7 +2,3 @@
 __pycache__/
 */__pycache__/
 *.pyc
-
-.env
-db.sqlite3
-memo.txt
