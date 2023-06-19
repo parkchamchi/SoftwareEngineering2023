@@ -113,7 +113,7 @@
           <form method="post" action="{% url 'toggle_hide_finished_tasks' %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-primary">
-              완료된 작업 숨기기 전환완료된 작업 숨기기 전환
+              완료된 작업 숨기기
               (Current:
               {% load frontend_options_extras %}
               {{ request.user|get_hide_finished_tasks }})
